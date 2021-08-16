@@ -1,8 +1,6 @@
 # Archallenge
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/archallenge`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This is a gem built to fulfill [The Picking Problem](https://gist.github.com/luctus/3db17f4eb1a6d32eebaceb86afcc30e2). Its a simple ruby exercise to get the most homogenous selection of tokens from a JSON file containing multiple recomendations of articles. 
 
 ## Installation
 
@@ -22,7 +20,30 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+This library takes a JSON input with the n recomendations on a given article based on 3 different algorithms:  **logs**, **content**, and **myad**, and returns an Array of tokens with the most homogenous list of recomendations, with a maximum of 4 recomendations (if needed, a different number can be specified).
+### Example
+ ```ruby
+ file = {
+  "logs": [
+    {
+      "url": "//www.archdaily.com/345048/nirma-vidyavihar-apurva-amin-architects",
+      "token": "345048",
+      "thumbnail": "//images.adsttc.com/media/images/5143/8a8e/b3fc/4baa/2c00/000e/small_jpg/NVV1_AAA_09.jpg?1363380874",
+      "title": "Nirma Vidyavihar / Apurva Amin Architects"
+    }
+  ],
+  "content": [],
+  "myad": []
+}
+=> {:logs=>[{:url=>"//www.archdaily.com/345048/nirma-vidyavihar-apurva-amin-architects", :token=>"345048", :thumbnail=>"//images.adsttc.com/media/images/5143/8a8e/b3fc/4baa/2c00/000e/small_jpg/NVV1_AAA_09.jpg?1363380874", :title=>"Nirma Vidyavihar / Apurva Amin Architects"}], :content=>[], :myad=>[]} 
+
+recomendation = Archallenge::ADSelector.new(file)
+ => #<Archallenge::ADSelector:0x0000559129b73378 @file={:logs=>[{:url=>"//www.archdaily.com/345048/nirma-vidyavihar-apurva-amin-architects", :token=>"345048", :thumbnail=>"//images.adsttc.com/media/images/5143/8a8e/b3fc/4baa/2c00/000e/small_jpg/NVV1_AAA_09.jpg?1363380874", :title=>"Nirma Vidyavihar / Apurva Amin Architects"}], :content=>[], :myad=>[]}> 
+
+#If required, you can specify a differente recomendation number for articles, default is 4
+recomendation.select
+=> [345048] 
+```
 
 ## Development
 
