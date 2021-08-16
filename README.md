@@ -40,7 +40,7 @@ This library takes a JSON input with the n recomendations on a given article bas
 recomendation = Archallenge::ADSelector.new(file)
  => #<Archallenge::ADSelector:0x0000559129b73378 @file={:logs=>[{:url=>"//www.archdaily.com/345048/nirma-vidyavihar-apurva-amin-architects", :token=>"345048", :thumbnail=>"//images.adsttc.com/media/images/5143/8a8e/b3fc/4baa/2c00/000e/small_jpg/NVV1_AAA_09.jpg?1363380874", :title=>"Nirma Vidyavihar / Apurva Amin Architects"}], :content=>[], :myad=>[]}> 
 
-#If required, you can specify a differente recomendation number for articles, default is 4
+#If required, you can specify a different recomendation number for articles, default is 4
 recomendation.select
 => [345048] 
 ```
